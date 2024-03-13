@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation=" http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+    <context:component-scan base-package="myweb.webvr" />
+    <context:annotation-config />
+    <bean id="userService" class="myweb.webvr.user.UserServiceImpl" />
+    <bean id="userDao" class="myweb.webvr.user.UserDaoImpl" />
+    <bean id="imgDao" class="myweb.webvr.imgdiadiem.imgDAOImpl" />
+    <bean id="locationsDao" class="myweb.webvr.dmdiadiem.LocationsDAOImpl" />
+    <bean id="ratingDAO" class="myweb.webvr.UserProfile.RatingDAOImpl" />
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="datasource" />
+    </bean>
+    <bean id="restTemplate" class="org.springframework.web.client.RestTemplate"/>
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="5242880"/> <!-- Kích thước tối đa của file hình ảnh (5MB) -->
+    </bean>
+    <bean id="amazonS3Client" class="com.amazonaws.services.s3.AmazonS3Client">
+        <constructor-arg>
+            <bean class="com.amazonaws.auth.BasicAWSCredentials">
+                <constructor-arg value="AKIAWTFNTSFPG2V7LVMF"/>
+                <constructor-arg value="iPtZ7O0mY6faegmpVhYx/Dv85Ho6/8PlCwnxDc73"/>
+            </bean>
+        </constructor-arg>
+    </bean>
+
+    <bean id="datasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://localhost:3306/rvctvr" />
+        <property name="username" value="DBCTRV" />
+        <property name="password" value="Ct123456" />
+    </bean>
+</beans>
