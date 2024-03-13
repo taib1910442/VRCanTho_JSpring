@@ -14,14 +14,7 @@
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="maxUploadSize" value="5242880"/> <!-- Kích thước tối đa của file hình ảnh (5MB) -->
     </bean>
-    <bean id="amazonS3Client" class="com.amazonaws.services.s3.AmazonS3Client">
-        <constructor-arg>
-            <bean class="com.amazonaws.auth.BasicAWSCredentials">
-                <constructor-arg value="AWS_Access_Key"/>
-                <constructor-arg value="AWS_Secret_Access_Key"/>
-            </bean>
-        </constructor-arg>
-    </bean>
+    
 
     <bean id="datasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
