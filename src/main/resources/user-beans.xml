@@ -17,8 +17,8 @@
     <bean id="amazonS3Client" class="com.amazonaws.services.s3.AmazonS3Client">
         <constructor-arg>
             <bean class="com.amazonaws.auth.BasicAWSCredentials">
-                <constructor-arg value="AKIAWTFNTSFPG2V7LVMF"/>
-                <constructor-arg value="iPtZ7O0mY6faegmpVhYx/Dv85Ho6/8PlCwnxDc73"/>
+                <constructor-arg value="AWS_Access_Key"/>
+                <constructor-arg value="AWS_Secret_Access_Key"/>
             </bean>
         </constructor-arg>
     </bean>
